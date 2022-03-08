@@ -1,10 +1,7 @@
 FROM alpine:3.15 as source
 
 RUN apk add --no-cache --no-progress \
-    git \
-    bash \
-    su-exec \
-    tzdata
+    git
 
 ARG SHA
 RUN git clone --branch py3 --depth=1 https://github.com/HelloZeroNet/ZeroNet.git /app/
@@ -25,7 +22,10 @@ RUN export user=zeronet \
 RUN apk add --no-cache --no-progress \
     openssl \
     py3-pip \
-    tor
+    tor \
+    bash \
+    su-exec \
+    tzdata
 
 RUN pip3 install --upgrade pip
 
