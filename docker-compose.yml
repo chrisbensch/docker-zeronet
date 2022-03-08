@@ -1,0 +1,15 @@
+version: "2"
+services:
+  zeronet:
+    container_name: zeronet
+    image: chrisbensch/docker-zeronet:latest
+    ports:
+      - 26552:26552
+      - 43110:43110
+    environment:
+      - ENABLE_TOR=true
+      - UI_PASSWORD=password
+    restart:
+      always
+
+
