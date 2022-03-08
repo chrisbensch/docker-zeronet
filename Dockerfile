@@ -39,7 +39,7 @@ COPY --from=source [ "/app", "/app" ]
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN pip3 install --no-cache-dir --progress-bar off -r /app/requirements.txt \
-  && mv /app/plugins/disabled-UiPassword /app/plugins/UiPassword \
+  #&& mv /app/plugins/disabled-UiPassword /app/plugins/UiPassword \
   && echo "ControlPort 9051" >>/etc/tor/torrc \
   && echo "CookieAuthentication 1" >>/etc/tor/torrc
 
