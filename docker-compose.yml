@@ -9,6 +9,8 @@ services:
     environment:
       - ENABLE_TOR=true
       - UI_PASSWORD=password
+    storage_opt:
+      size: '8G'
     restart:
       always
 

@@ -1,7 +1,10 @@
 FROM alpine:3.15 as source
 
 RUN apk add --no-cache --no-progress \
-    git
+    git \
+    bash \
+    su-exec \
+    tzdata
 
 ARG SHA
 RUN git clone --branch py3 --depth=1 https://github.com/HelloZeroNet/ZeroNet.git /app/
