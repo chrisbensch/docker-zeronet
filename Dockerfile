@@ -1,4 +1,4 @@
-FROM alpine:3.15.0 as source
+FROM alpine:3.15 as source
 
 RUN apk add --no-cache --no-progress \
     git \
@@ -13,21 +13,10 @@ WORKDIR /app
 
 #------------------#
 
-FROM alpine:3.14.0
+FROM alpine:3.15
 
-ARG VERSION
-
-LABEL maintainer="Sandro Jäckel <sandro.jaeckel@gmail.com>" \
-  org.opencontainers.image.created=$BUILD_DATE \
-  org.opencontainers.image.authors="Sandro Jäckel <sandro.jaeckel@gmail.com>" \
-  org.opencontainers.image.url="https://github.com/SuperSandro2000/docker-images/tree/master/zeronet" \
-  org.opencontainers.image.documentation="https://zeronet.io/docs/" \
-  org.opencontainers.image.source="https://github.com/SuperSandro2000/docker-images" \
-  org.opencontainers.image.version=$VERSION \
-  org.opencontainers.image.revision=$REVISION \
-  org.opencontainers.image.vendor="SuperSandro2000" \
-  org.opencontainers.image.licenses="GPL-2.0" \
-  org.opencontainers.image.title="ZeroNet" \
+# Original Credit - "Sandro Jäckel <sandro.jaeckel@gmail.com>"
+LABEL maintainer="Chris Bensch <chris.bensch@gmail.com>" \
   org.opencontainers.image.description="ZeroNet - Decentralized websites using Bitcoin crypto and BitTorrent network"
 
 RUN export user=zeronet \
@@ -37,6 +26,8 @@ RUN apk add --no-cache --no-progress \
     openssl \
     py3-pip \
     tor
+
+RUN pip3 install --upgrade pip
 
 COPY [ "files/pip.conf", "/etc/" ]
 COPY [ "files/entrypoint.sh", "/usr/local/bin/" ]
