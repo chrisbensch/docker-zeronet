@@ -1,0 +1,3 @@
+[submodule "zeronet-conservancy"]
+	path = zeronet-conservancy
+	url = https://github.com/zeronet-conservancy/zeronet-conservancy.git
