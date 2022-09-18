@@ -1,0 +1,10 @@
+DataDirectory /var/lib/tor
+SocksPort 0.0.0.0:9050
+SocksPolicy accept *
+Log notice stdout
+ControlPort 9051
+CookieAuthentication 1
+CircuitBuildTimeout  5
+KeepalivePeriod 60
+NewCircuitPeriod 15
+NumEntryGuards 8  
